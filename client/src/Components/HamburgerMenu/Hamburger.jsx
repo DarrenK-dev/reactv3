@@ -4,6 +4,8 @@ import styled from 'styled-components';
 import Navbar, {NavItem} from '../Navbar/Navbar';
 import logo from '../../logo.svg';
 
+const _width = 768;
+
 
 const Hamburger = styled.div`
   /* styles for the hamburger menu button */
@@ -31,12 +33,13 @@ const HamburgerLine = styled.div`
 const MobileMenu = styled.div`
   /* styles for the mobile menu */
   width: 100%;
-  height: 100%;
+  /* height: 90%; */
   position: fixed;
   top: 0;
   left: 0;
   background-color: #333;
   z-index: 999;
+  /* transform: translateX(-100%); */
   transform: translateX(-100%);
   transition: all 0.3s ease;
   &.open {
@@ -57,7 +60,7 @@ const HamburgerLinkContainer = styled.div`
   justify-content: center;
   align-items: center;
   /* height: 100%; */
-  @media (min-width: 768px) {
+  @media (min-width: 769px) {
     display: none;
   }
 `;
@@ -68,7 +71,7 @@ const HamburgerLink = styled(Link)`
   flex-direction: column;
   text-align: center;
   justify-content: center;
-  width: 100%;
+  width: 200px;
   border: 1px solid #FDB813;
   color: #FDB813;
   box-sizing: border-box;
@@ -78,8 +81,16 @@ const HamburgerLink = styled(Link)`
   font-family: 'Courier New', Courier, monospace;
   font-weight: bold;
   height: 50px;
-  @media (min-width: 768px) {
+  @media (min-width: 769px) {
     display: none;
+  }
+  &:hover {
+    color: #FDB813;
+    box-shadow: 0 0 0 2px #FDB813;
+    border-radius: 0.2px;
+    background-color: #FDB813;
+    color: #181818;
+    transition: all 0.2s ease-in-out;
   }
 `;
 
@@ -98,9 +109,13 @@ const Logo = styled.img`
   font-weight: bold;
   height: 30px;
   margin: 30px;
-  @media (min-width: 768px) {
+  @media (min-width: 769px) {
     display: none;
   }
+`;
+
+const Spacer = styled.div`
+height: 50px;
 `;
 
 const HamburgerMenu = () => {
@@ -123,7 +138,9 @@ const HamburgerMenu = () => {
           <HamburgerLink onClick={handleClick} to='/'>Home</HamburgerLink>
           <HamburgerLink onClick={handleClick} to='/about'>About</HamburgerLink>
           <HamburgerLink onClick={handleClick} to='/dashboard'>Dashboard</HamburgerLink>
+          <Spacer/>
           <HamburgerLink onClick={handleClick}>Close Menu</HamburgerLink>
+          <Spacer/>
         </HamburgerLinkContainer>
           
       </MobileMenu>
