@@ -1,9 +1,12 @@
 import styled from 'styled-components';
 import logo from '../../logo.svg';
 import Navbar from '../../Components/Navbar'
+import HamburgerMenu from '../../Components/HamburgerMenu';
 
 
 const HeaderContainer = styled.header`
+  width: 100%;
+  box-sizing: border-box;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -23,6 +26,7 @@ const Logo = styled.img`
 const Header = ({children}) => {
   return (
     <HeaderContainer>
+      <HamburgerMenu/>
       <Logo src={logo} alt="logo" />
       <Navbar />
       {children}
