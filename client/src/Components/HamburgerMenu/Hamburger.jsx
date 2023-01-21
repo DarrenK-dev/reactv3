@@ -61,6 +61,7 @@ const HamburgerMenu = () => {
         <HamburgerLine className={isOpen ? 'open' : ''} />
       </Hamburger>
       <MobileMenu className={isOpen ? 'open' : ''}>
+        <button onClick={handleClick}>Close</button>
         <MobileMenuItem>Menu item 1</MobileMenuItem>
         <MobileMenuItem>Menu item 2</MobileMenuItem>
         <MobileMenuItem>Menu item 3</MobileMenuItem>
