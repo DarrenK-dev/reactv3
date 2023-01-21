@@ -23,12 +23,14 @@ const Logo = styled.img`
   margin-left: 10px;
 `;
 
+
+
 const Header = ({children}) => {
   return (
     <HeaderContainer>
-      <HamburgerMenu/>
       <Logo src={logo} alt="logo" />
       <Navbar />
+      <HamburgerMenu/>
       {children}
     </HeaderContainer>
   )
