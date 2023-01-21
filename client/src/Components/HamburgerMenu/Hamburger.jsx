@@ -17,7 +17,7 @@ const HamburgerLine = styled.div`
   width: 100%;
   height: 2px;
   background-color: #FDB813;
-  margin: 6px 0;
+  margin: 8px 0px;
   transition: all 0.2s ease;
   &.open {
     transform: rotate(45deg) translate(5px, 5px);
