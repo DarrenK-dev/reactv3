@@ -1,5 +1,9 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import Navbar, {NavItem} from '../Navbar/Navbar';
+import logo from '../../logo.svg';
+
 
 const Hamburger = styled.div`
   /* styles for the hamburger menu button */
@@ -31,7 +35,7 @@ const MobileMenu = styled.div`
   position: fixed;
   top: 0;
   left: 0;
-  background-color: #fff;
+  background-color: #333;
   z-index: 999;
   transform: translateX(-100%);
   transition: all 0.3s ease;
@@ -44,6 +48,59 @@ const MobileMenuItem = styled.div`
   /* styles for the mobile menu items */
   padding: 10px;
   text-align: center;
+`;
+
+const HamburgerLinkContainer = styled.div`
+  /* styles for the mobile menu nav */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* height: 100%; */
+  @media (min-width: 768px) {
+    display: none;
+  }
+`;
+
+const HamburgerLink = styled(Link)`
+  /* styles for the mobile menu nav */
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  width: 100%;
+  border: 1px solid #FDB813;
+  color: #FDB813;
+  box-sizing: border-box;
+  padding: 10px;
+  background-color: #333;
+  text-decoration: none;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: bold;
+  height: 50px;
+  @media (min-width: 768px) {
+    display: none;
+  }
+`;
+
+const Logo = styled.img`
+  /* styles for the mobile menu nav */
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  width: 100%;
+  color: #FDB813;
+  box-sizing: border-box;
+  background-color: #333;
+  text-decoration: none;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: bold;
+  height: 30px;
+  margin: 30px;
+  @media (min-width: 768px) {
+    display: none;
+  }
 `;
 
 const HamburgerMenu = () => {
@@ -61,10 +118,14 @@ const HamburgerMenu = () => {
         <HamburgerLine className={isOpen ? 'open' : ''} />
       </Hamburger>
       <MobileMenu className={isOpen ? 'open' : ''}>
-        <button onClick={handleClick}>Close</button>
-        <MobileMenuItem>Menu item 1</MobileMenuItem>
-        <MobileMenuItem>Menu item 2</MobileMenuItem>
-        <MobileMenuItem>Menu item 3</MobileMenuItem>
+        <HamburgerLinkContainer>
+          <Logo src={logo} alt="logo" />
+          <HamburgerLink onClick={handleClick} to='/'>Home</HamburgerLink>
+          <HamburgerLink onClick={handleClick} to='/about'>About</HamburgerLink>
+          <HamburgerLink onClick={handleClick} to='/dashboard'>Dashboard</HamburgerLink>
+          <HamburgerLink onClick={handleClick}>Close Menu</HamburgerLink>
+        </HamburgerLinkContainer>
+          
       </MobileMenu>
     </>
   );

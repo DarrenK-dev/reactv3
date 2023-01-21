@@ -16,7 +16,7 @@ const Nav = styled.nav`
   }
 `;
 
-const NavItem = styled(Link)`
+export const NavItem = styled(Link)`
   color: #fff;
   text-decoration: none;
   margin-left: 1.6em;
