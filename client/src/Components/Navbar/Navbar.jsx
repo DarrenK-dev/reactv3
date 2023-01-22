@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import Home from '../../Components/Home'
 
 const Logo = styled.img`
   width: 50px;
