@@ -1,37 +1,32 @@
 import React from 'react'
-import {useSelector, useDispatch} from 'react-redux'
+import styled from 'styled-components'
+import { useSelector, useDispatch } from 'react-redux';
+import { addSymbol, removeSymbol } from '../../redux/symbols';
 
+const StyledTestComponent = styled.div`
+  height: 100vh;
+  width: 100vw;
+  background-color: aliceblue;
+`
 
 const TestComponent = () => {
-  const dispatch = useDispatch()
-  const {symbols} = useSelector(state => state.addSymbol.symbols)
 
-
-  const addSymbol = (symbol) => {
-    console.log('addSymbol', symbol)
-    dispatch({type: 'ADD_SYMBOL', payload: symbol})
-  }
-
-  const removeSymbol = (symbol) => {
-    console.log('removeSymbol', symbol)
-    dispatch({type: 'REMOVE_SYMBOL', payload: symbol})
-  }
-
+  const {symbols} = useSelector((state) => state.symbols);
+  const dispatch = useDispatch();
 
   return (
-    <>
-      <div>TestComponent</div>
-      <button onClick={() => addSymbol('btcusdt')}>Add BTCUSDT</button>
-      <button onClick={() => removeSymbol('btcusdt')}>Remove BTCUSDT</button>
+    <StyledTestComponent>
+      <h1>Test Component</h1>
+
       {
-        symbols && symbols.map((symbol, index) => {
-          return (
-            <div key={index}>{symbol}</div>
-          )
-        }
-        )
+        symbols.map((symbol) => (
+          <p key={symbol}>{symbol}</p>
+        ))
       }
-    </>
+
+      <button onClick={() => dispatch(addSymbol('BTCUSDT'))}>Add BTCUSDT</button>
+      <button onClick={() => dispatch(removeSymbol('BTCUSDT'))}>Remove BTCUSDT</button>
+    </StyledTestComponent>
   )
 }
 
