@@ -33,18 +33,13 @@ const Overlay = styled.div`
 
 const Home = () => {
 
-  const prices = useSelector(state => state.updatePrice.prices);
-  const dispatch = useDispatch();
+
 
   return (
     <>
-      
-        <p>BTC price = {prices.BTC}</p>
-        <p>ETH price = {prices.ETH}</p>
-        <button onClick={() => dispatch({type: 'UPDATE_PRICE', symbol: 'BTC', price: 100})}>Add 100 BTC</button>
-      
-      {/* <HeroImg src={HeroImage} alt="Laptop with stocks chart." />
-      <Overlay opacity={0.6}/> */}
+   
+      <HeroImg src={HeroImage} alt="Laptop with stocks chart." />
+      <Overlay opacity={0.6}/>
     </>
   )
 }
