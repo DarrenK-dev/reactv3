@@ -66,7 +66,7 @@ const SideBarToggleIcon = styled.div`
 
 const Content = styled.div`
   height: 100%;
-  width: calc(100vw - 200px);
+  /* width: calc(100vw - 200px); */
   background-color: #ccc;
   box-sizing: border-box;
   display: flex;
@@ -74,6 +74,7 @@ const Content = styled.div`
   align-items: center;
   justify-content: center;
   flex: 1;
+  margin-left: 25px;
 
   @media (max-width: 768px) {
     width: 100vw;
