@@ -18,12 +18,12 @@ const Container = styled.div`
 const SidebarContainer = styled.div`
   height: calc(100vh - 60px);
   width: 200px;
-  background-color: #ccc;
+  background-color: #333;
   box-sizing: border-box;
   display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column;
+  /* align-items: center; */
+  /* justify-content: center; */
   position: absolute;
   left: 0;
   transition: left 0.5s ease-in-out;
@@ -32,6 +32,14 @@ const SidebarContainer = styled.div`
     position: absolute;
     left: -200px;
     transition: left 0.5s ease-in-out;
+  }
+  // if sidebarOpen is true, slide the sidebar back in
+  &.open {
+    left: 0;
+  }
+  // if sidebarOpen is false, slide the sidebar off screen
+  &.close {
+    left: -200px;
   }
 `
 // button look like a tab, make it look like a div
@@ -56,27 +64,10 @@ const SideBarToggleIcon = styled.div`
   }
 `
 
-const Sidebar = styled.div`
-  height: 100%;
-  width: 200px;
-  background-color: #ccc;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-
-  @media (max-width: 768px) {
-    position: absolute;
-    left: -200px;
-    transition: left 0.5s ease-in-out;
-  }
-`
-
 const Content = styled.div`
   height: 100%;
   width: calc(100vw - 200px);
-  background-color: blue;
+  background-color: #ccc;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -89,19 +80,19 @@ const Content = styled.div`
   }
 `
 
-const Tab = styled.div`
-  height: 100%;
-  width: 50px;
-  background-color: red;
-  /* position: absolute; */
-  /* left: -50px; */
-  /* top: 50%; */
-  /* transform: translateY(-50%); */
-  /* transition: left 0.5s ease-in-out; */
-
-  /* @media (min-width: 768px) {
-    display: none;
-  } */
+const Symbol = styled.div`
+  height: 3em;
+  width: 100%;
+  background-color: #333;
+  /* border-top: 1px solid #222; */
+  border-bottom: 1px solid #222;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-left: 20px;
+  color: #FDB813;
+  font-family: 'Arial', sans-serif;
 `
 
 const Dashboard = () => {
@@ -122,16 +113,27 @@ const Dashboard = () => {
     return () => window.removeEventListener('resize', handleResize)
   }, [])
 
+  const toggleSideBar = () => {
+    setSidebarOpen(!sidebarOpen)
+  }
+
   return (
 
     <Container>
-      <SidebarContainer>
-      <SidebarToggle>
-        <SideBarToggleIcon className={sidebarOpen ? 'open': ''}>
-          >
-        </SideBarToggleIcon>
-      </SidebarToggle>
-        
+      <SidebarContainer className={sidebarOpen ? 'open': 'close'}>
+        <SidebarToggle>
+          <SideBarToggleIcon 
+            className={sidebarOpen ? 'open' : ''}
+            onClick={toggleSideBar}>
+            >
+          </SideBarToggleIcon>
+        </SidebarToggle>
+        <Symbol>
+          BTCUSDT
+        </Symbol>
+        <Symbol>
+          ETHUSDT
+        </Symbol>
       </SidebarContainer>
       <Content>
         Content
