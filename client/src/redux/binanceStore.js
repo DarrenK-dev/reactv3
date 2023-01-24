@@ -1,8 +1,11 @@
 import {configureStore} from '@reduxjs/toolkit';
+import symbolsReducer from './symbols';
 
 
 const store = configureStore({
-  reducer: {}
+  reducer: {
+    symbols: symbolsReducer,
+  }
 });
 
 export default store;

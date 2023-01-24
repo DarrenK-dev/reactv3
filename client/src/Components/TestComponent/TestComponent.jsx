@@ -1,36 +1,46 @@
-import React from 'react'
-import {useSelector, useDispatch} from 'react-redux'
+import React, {useState, useEffect} from 'react'
+import styled from 'styled-components'
+import { useSelector, useDispatch } from 'react-redux';
+import { addSymbol, removeSymbol } from '../../redux/symbols';
+import SymbolSearch from '../SymbolSearch/SymbolSearch';
+import Sidebar from '../Sidebar/Sidebar';
 
+const Container = styled.div`
+  height: 100vh;
+  width: 100vw;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+`
+
+const Content = styled.div`
+  height: 100vh;
+  width: calc(100% - 200px);
+  background-color: blue;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`
+
+const StyledTestComponent = styled.div`
+  margin-left: 200px;
+  height: 100vh;
+  width: 100vw;
+  background-color: aliceblue;
+`
 
 const TestComponent = () => {
-  const dispatch = useDispatch()
-  const {symbols} = useSelector(state => state.addSymbol.symbols)
 
-
-  const addSymbol = (symbol) => {
-    console.log('addSymbol', symbol)
-    dispatch({type: 'ADD_SYMBOL', payload: symbol})
-  }
-
-  const removeSymbol = (symbol) => {
-    console.log('removeSymbol', symbol)
-    dispatch({type: 'REMOVE_SYMBOL', payload: symbol})
-  }
-
+  const {symbols} = useSelector((state) => state.symbols);
+  const dispatch = useDispatch();
 
   return (
-    <>
-      <div>TestComponent</div>
-      <button onClick={() => addSymbol('btcusdt')}>Add BTCUSDT</button>
-      <button onClick={() => removeSymbol('btcusdt')}>Remove BTCUSDT</button>
-      {
-        symbols && symbols.map((symbol, index) => {
-          return (
-            <div key={index}>{symbol}</div>
-          )
-        }
-        )
-      }
+    <>  
+    foo
     </>
   )
 }
