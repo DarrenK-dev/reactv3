@@ -75,9 +75,14 @@ const Content = styled.div`
   justify-content: center;
   flex: 1;
   margin-left: 25px;
+  transition: margin-left 0.5s ease-in-out;
 
   @media (max-width: 768px) {
     width: 100vw;
+  }
+  // if sidebarOpen is true and window width is greater than 768px, margin-left 225px
+  &.open {
+    margin-left: 225px;
   }
 `
 
@@ -136,7 +141,7 @@ const Dashboard = () => {
           ETHUSDT
         </Symbol>
       </SidebarContainer>
-      <Content>
+      <Content className={sidebarOpen ? 'open' : ''}>
         Content
       </Content>
     </Container>
